@@ -5,6 +5,7 @@ RUN apt-get -y install python3.6
 RUN apt -y install python3-pip
 RUN mkdir /simpleapp
 COPY . /simpleApp/
+COPY /simpleApp /simpleApp/
 WORKDIR /simpleApp
 RUN pip3 install -r requirements.txt
 RUN python3 manage.py makemigrations
