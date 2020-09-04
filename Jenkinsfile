@@ -25,7 +25,7 @@ pipeline {
                 }
             
             }
-        }
+        
         stage('Deploy') {
             steps {
                sh 'docker run -d -p 8000:4000 123123123123123456/jenkins_pymaster:v1.0'
