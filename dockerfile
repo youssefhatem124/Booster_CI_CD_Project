@@ -1,12 +1,13 @@
 from ubuntu
-RUN apt install python3.6
-RUN apt install python3-pip
+RUN apt-get update && \
+    apt-get install -y python3
+RUN apt-get install python3-pip
 RUN mkdir /simpleapp
 COPY simpleApp /simpleApp
 
 WORKDIR /simpleApp
 COPY requirements.txt /simpleapp/ 
-RUN pip install -r requirements.txt
+RUN pip3 install -r requirements.txt
 RUN python3.6 manage.py makemigrations
 RUN python3.6 manage.py migrate
 RUN python3.6 manage.py runserver 0.0.0.0:8000
