@@ -19,7 +19,7 @@ pipeline {
         }
         stage('push') {
             steps {
-                withCredentials([usernamePassword(credentialsid:"docker",usernamevariable:"USERNAME",passwordvariable:"Password")]){
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'mycreds',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])
                 sh 'docker login --username $USERNAME --password $PASSWORD'
                 sh 'docker push 123123123123123456/jenkins_pymaster:v1.0'
                 }
