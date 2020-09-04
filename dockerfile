@@ -1,7 +1,7 @@
 from ubuntu
 RUN apt-get update -qq
 RUN apt-get -y install python3.6
-RUN apt install python3-pip
+RUN apt -y install python3-pip
 RUN mkdir /simpleapp
 COPY . /simpleApp/
 WORKDIR /simpleApp
