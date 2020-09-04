@@ -1,19 +1,18 @@
 from ubuntu
 COPY simpleApp /simpleApp
 WORKDIR /simpleApp
-RUN apt install software-properties-common -y
-RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt install python3.7 -y
 
-# Make python 3.7 the default
-RUN echo "alias python=python3.7" >> ~/.bashrc
-RUN export PATH=${PATH}:/usr/bin/python3.7
-RUN /bin/bash -c "source ~/.bashrc"
+RUN apt-get update && \
+  apt-get install -y software-properties-common && \
+  add-apt-repository ppa:jonathonf/python-3.6
+RUN apt-get update
 
-# Install pip
-RUN apt install python3-pip -y
-RUN python -m pip install --upgrade pip
+RUN apt-get install -y build-essential python3.6 python3.6-dev python3-pip python3.6-venv
+RUN apt-get install -y git
 
+# update pip
+RUN python3.6 -m pip install pip --upgrade
+RUN python3.6 -m pip install wheel
 RUN pip3 install -r requirements.txt
 RUN python3.6 manage.py makemigrations
 RUN python3.6 manage.py migrate
