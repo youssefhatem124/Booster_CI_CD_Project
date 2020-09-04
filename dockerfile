@@ -1,6 +1,7 @@
 from ubuntu
 COPY simpleApp /simpleApp
 WORKDIR /simpleApp
+RUN apt-get install python3.6
 RUN set -xe \
     && apt-get update \
     && apt-get install python-pip
