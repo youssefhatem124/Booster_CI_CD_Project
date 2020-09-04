@@ -5,17 +5,7 @@ pipeline {
             steps {
                 sh 'docker build -f dockerfile . -t 123123123123123456/jenkins_pydev:v1.0'
             }
-             post{
-             success{
-                slackSend(color:'#00FF00',message:'successful')
-            }
-             failure{
-                slackSend(color:'#FF0000',message:'failure')
-            }
-             aborted{
-                slackSend(color:'#FFFF00',message:'aborted')
-            }
-            }
+         
         }
         stage('push') {
             steps {
