@@ -1,9 +1,8 @@
-from ubuntu
-COPY simpleApp /simpleApp
-RUN apt-get update && apt-get install -y software-properties-common && add-apt-repository ppa:deadsnakes/ppa && \
-    apt-get update && apt-get install -y python3.6 python3.6-dev python3-pip
-RUN apt-get install -y pkg-config
+from python:3.6
+ENV PYTHONUNBUFFERED 1
 RUN mkdir /simpleapp
+COPY simpleApp /simpleApp
+
 WORKDIR /simpleApp
 COPY requirements.txt /simpleapp/ 
 RUN pip3 install -r requirements.txt
