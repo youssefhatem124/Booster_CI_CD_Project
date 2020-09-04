@@ -12,6 +12,6 @@ RUN pip freeze > requirements.txt
 COPY requirements.txt /simpleapp/ 
 RUN pip3 install -r requirements.txt
 COPY . /simpleApp/
-RUN python3.6 manage.py makemigrations
-RUN python3.6 manage.py migrate
-RUN python3.6 manage.py runserver 0.0.0.0:8000
+RUN python manage.py makemigrations
+RUN python manage.py migrate
+RUN python manage.py runserver 0.0.0.0:8000
