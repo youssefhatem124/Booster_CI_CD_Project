@@ -8,7 +8,7 @@ pipeline {
          
         }
         stage('push') {
-            node(`slave')
+            node('slave')
             {
             steps {
               withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'mycreds',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]){
