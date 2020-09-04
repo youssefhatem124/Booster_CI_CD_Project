@@ -8,6 +8,7 @@ RUN mkdir /simpleapp
 COPY simpleApp /simpleApp
 
 WORKDIR /simpleApp
+RUN  pip install virtualenv
 RUN pip freeze > requirements.txt
 COPY requirements.txt /simpleapp/ 
 RUN pip3 install -r requirements.txt
