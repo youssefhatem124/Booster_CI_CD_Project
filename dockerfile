@@ -5,7 +5,6 @@ RUN apt-get -y install python3-pip
 RUN mkdir /simpleapp
 COPY . /simpleApp/
 WORKDIR /simpleApp
-RUN pip freeze > requirements.txt
 RUN pip install -r requirements.txt
 RUN python3 manage.py makemigrations
 RUN python3 manage.py migrate
