@@ -16,7 +16,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-               sh 'docker run -d -p 8000:3030 123123123123123456/jenkins_pydev:v1.0'
+               sh 'docker run -d -p 3030:8000 123123123123123456/jenkins_pydev:v1.0'
             }
            
         }
