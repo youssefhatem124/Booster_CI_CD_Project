@@ -9,15 +9,14 @@ pipeline {
         }
         stage('push') {
             steps {
-              withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'docker',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']])                sh 'docker login --username $USERNAME --password $PASSWORD'
-                sh 'docker push 123123123123123456/jenkins_pydev:v1.0'
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId:'docker',usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]){                sh 'docker push 123123123123123456/jenkins_pydev:v1.0'
                 }
-            
+            }
             }
 
         stage('Deploy') {
             steps {
-               sh 'docker run -d -p 8000:3000 123123123123123456/jenkins_pydev:v1.0'
+               sh 'docker run -d -p 8000:3030 123123123123123456/jenkins_pydev:v1.0'
             }
            
         }
